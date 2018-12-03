@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Listagem de Cerveja</title>
+        <link rel="stylesheet" href="./src/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="example">
+            <a class="beer-card">
+                <div class="beer-img-wrapper">
+                    <img class="beer-img" src="https://images.punkapi.com/v2/2.png" />
+                </div>
+                <div class="beer-info-wrapper">
+                    <div class="beer-info-group">
+                        <strong>nome:</strong>
+                        <span class="beer-name"></span>
+                    </div>
+                    <div class="beer-info-group">
+                        <strong>descricação:</strong>
+                        <span class="beer-description"></span>
+                    </div>
+                    <div class="info-group">
+                        <strong>abv:</strong>
+                        <span class="beer-abv"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url: 'https://api.punkapi.com/v2/beers',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response){
+                        var exampleBeerCard = $('#example .beer-card');
+                        response.forEach(function(json){
+                            let beerCard = exampleBeerCard.clone();
+                            beerCard.attr("id", json.id);
+                            beerCard.find(".beer-img").attr("src", json.image_url);
+                            beerCard.find(".beer-name").html(json.name);
+                            beerCard.find(".beer-description").html(json.description);
+                            beerCard.find(".beer-abv").html(json.abv);
+                            $('body').append(beerCard);
+                        });
+                        $('#example').remove();
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

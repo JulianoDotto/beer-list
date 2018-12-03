@@ -1,0 +1,38 @@
+body{
+    background-color: #eeeeee;
+    font-family: sans-serif;
+}
+/*
+    CARD
+*/
+.beer-card{
+    display: inline-flex;
+    height: 250px;
+    background-color: #ffffff;
+    width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px;
+}
+.beer-card > *{
+    height: 100%;
+}
+/*
+    IMG
+*/
+.beer-card .beer-img-wrapper{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.beer-card .beer-img-wrapper .beer-img{max-height: 100%;}
+/*  
+    INFO
+*/
+.beer-card .beer-info-wrapper{flex: 2;}
+.beer-card .beer-info-wrapper .beer-info-group{
+    margin: 15px 0;
+}
+.beer-card .beer-info-wrapper .beer-info-group strong{
+    margin-right: 10px;
+}
