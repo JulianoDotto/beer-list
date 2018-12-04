@@ -6,7 +6,7 @@
     </head>
     <body>
         <div id="example">
-            <a class="beer-card">
+            <a href="#" target="_blank" class="beer-card">
                 <div class="beer-img-wrapper">
                     <img class="beer-img" src="https://images.punkapi.com/v2/2.png" />
                 </div>
@@ -35,13 +35,14 @@
                     success: function(response){
                         var exampleBeerCard = $('#example .beer-card');
                         response.forEach(function(json){
-                            let beerCard = exampleBeerCard.clone();
-                            beerCard.attr("id", json.id);
-                            beerCard.find(".beer-img").attr("src", json.image_url);
-                            beerCard.find(".beer-name").html(json.name);
-                            beerCard.find(".beer-description").html(json.description);
-                            beerCard.find(".beer-abv").html(json.abv);
-                            $('body').append(beerCard);
+                        let beerCard = exampleBeerCard.clone();
+                        beerCard.attr("id", json.id);
+                        beerCard.attr("href", "https://www.google.com.br/search?q='"+json.name+" beer'");
+                        beerCard.find(".beer-img").attr("src", json.image_url);
+                        beerCard.find(".beer-name").html(json.name);
+                        beerCard.find(".beer-description").html(json.description);
+                        beerCard.find(".beer-abv").html(json.abv);
+                        $('body').append(beerCard);
                         });
                         $('#example').remove();
                     }
